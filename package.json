@@ -1,0 +1,32 @@
+{
+  "name": "pruno-http",
+  "version": "1.0.0",
+  "description": "A simple HTTP server for pruno. Especially useful for prototyping or building static sites.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "pruno",
+    "http",
+    "server",
+    "prototyping"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cdebotton/pruno-http.git"
+  },
+  "author": "Christian de Botton <debotton@brooklynunited.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cdebotton/pruno-http/issues"
+  },
+  "homepage": "https://github.com/cdebotton/pruno-http",
+  "dependencies": {
+    "connect-livereload": "^0.5.2",
+    "deepmerge": "^0.2.7",
+    "express": "^4.11.1",
+    "serve-static": "^1.8.1",
+    "tiny-lr": "^0.1.5"
+  }
+}
