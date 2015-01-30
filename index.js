@@ -22,7 +22,7 @@ HttpTask.getDefaults = function() {
 HttpTask.prototype.generateWatcher = function(gulp, params) {
   return function() {
     serverRunner.run(params);
-    pruno.notify('Koa Server Started!');
+    pruno.notify('Simple Server Started!');
     return gulp.watch(params.dist + '/**/*', serverRunner.notify);
   };
 };
