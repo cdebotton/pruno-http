@@ -13,13 +13,16 @@ HttpTask.getDefaults = function() {
   return {
     listen: 3000,
     env: 'development',
-    dist: '::dist',
-    file: path.join(__dirname, './utils/server.js')
+    dist: '::dist'
   };
 };
 
 HttpTask.prototype.generateWatcher = function(gulp, params) {
   return function() {
+    if (! params.file) {
+      params.file = path.join(__dirname, './utils/server.js');
+    }
+
     serverRunner.run(params);
     return gulp.watch(params.dist + '/**/*', serverRunner.notify);
   };
