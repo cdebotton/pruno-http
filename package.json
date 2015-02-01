@@ -1,6 +1,6 @@
 {
   "name": "pruno-http",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple HTTP server for pruno. Especially useful for prototyping or building static sites.",
   "main": "index.js",
   "scripts": {
