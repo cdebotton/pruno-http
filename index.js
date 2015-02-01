@@ -1,6 +1,5 @@
 "use strict";
 
-var pruno = module.parent.require('pruno');
 var serverRunner = require('./utils/server-runner');
 var path = require('path');
 
@@ -22,9 +21,8 @@ HttpTask.getDefaults = function() {
 HttpTask.prototype.generateWatcher = function(gulp, params) {
   return function() {
     serverRunner.run(params);
-    pruno.notify('Simple Server Started!');
     return gulp.watch(params.dist + '/**/*', serverRunner.notify);
   };
 };
 
-module.exports = pruno.extend(HttpTask);
+module.exports = HttpTask;
