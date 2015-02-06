@@ -33,11 +33,17 @@ HttpTask.prototype.generateWatcher = function(gulp, params) {
       livereload.changed({body: { files: [fileName] }});
     });
 
+    process.env.PATH = path.join(
+      __dirname, 'node_modules', '.bin'
+    ) + ':' + process.env.PATH;
+
     var env = assign({}, process.env, {
       DIST: params.dist
     });
 
-    var child = spawn('node', [server], {
+    var ignore = '--ignore ' + params.dist;
+
+    spawn('supervisor', ['--harmony', ignore, '-e js', server], {
       stdio: 'inherit',
       env: env
     });
