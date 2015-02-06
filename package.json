@@ -27,6 +27,7 @@
     "deepmerge": "^0.2.7",
     "express": "^4.11.1",
     "serve-static": "^1.8.1",
+    "supervisor": "^0.6.0",
     "tiny-lr": "^0.1.5"
   }
 }

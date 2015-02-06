@@ -1,7 +1,8 @@
 "use strict";
 
-var serverRunner = require('./utils/server-runner');
 var path = require('path');
+var supervisor = require('supervisor');
+var livereload = require('tiny-lr')();
 
 function HttpTask (params) {
   this.params = (params || {});
@@ -11,6 +12,7 @@ HttpTask.displayName = 'HttpTask';
 
 HttpTask.getDefaults = function() {
   return {
+    lrPort: 35729,
     listen: 3000,
     env: 'development',
     dist: '::dist'
@@ -19,12 +21,17 @@ HttpTask.getDefaults = function() {
 
 HttpTask.prototype.generateWatcher = function(gulp, params) {
   return function() {
-    if (! params.file) {
-      params.file = path.join(__dirname, './utils/server.js');
-    }
+    var simpleServer = path.join(__dirname, './utils/server.js');
+    var server = params.file || simpleServer;
 
-    serverRunner.run(params);
-    return gulp.watch(params.dist + '/**/*', serverRunner.notify);
+    livereload.listen(params.lrPort);
+
+    gulp.watch([params.dist + '/**/*'], function(event) {
+      var fileName = path.relative(__dirname, event.path);
+      livereload.changed({body: { files: [fileName] }});
+    });
+
+    supervisor.run(['--harmony', '-i build/', '-e js', server]);
   };
 };
 
