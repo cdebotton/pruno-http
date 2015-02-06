@@ -1,6 +1,8 @@
 "use strict";
 
 var path = require('path');
+var spawn = require('child_process').spawn;
+var assign = require('object-assign');
 var supervisor = require('supervisor');
 var livereload = require('tiny-lr')();
 
@@ -31,7 +33,14 @@ HttpTask.prototype.generateWatcher = function(gulp, params) {
       livereload.changed({body: { files: [fileName] }});
     });
 
-    supervisor.run(['--harmony', '-i build/', '-e js', server]);
+    var env = assign({}, process.env, {
+      DIST: params.dist
+    });
+
+    var child = spawn('node', [server], {
+      stdio: 'inherit',
+      env: env
+    });
   };
 };
 
