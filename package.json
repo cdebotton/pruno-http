@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/cdebotton/pruno-http",
   "dependencies": {
-    "connect-livereload": "^0.5.2",
+    "compression": "^1.4.3",
     "deepmerge": "^0.2.7",
     "express": "^4.11.1",
     "object-assign": "^2.0.0",
