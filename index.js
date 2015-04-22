@@ -38,7 +38,8 @@ HttpTask.prototype.generateWatcher = function(gulp, params) {
     ) + ':' + process.env.PATH;
 
     var env = assign({}, process.env, {
-      DIST: params.dist
+      DIST: params.dist,
+      PORT: process.env.PORT || 3000
     });
 
     var ignore = '--ignore ' + params.dist;

@@ -8,7 +8,7 @@ var app = express();
 app.use(compression());
 app.use(serveStatic(process.env.DIST));
 
-app.listen(3000, function(err, callback) {
+app.listen(process.env.PORT, function(err, callback) {
   if (err) throw err;
-  console.log('Simple HTTP server listening on port 3000');
+  console.log('PrunoHTTP server listening on port ' + process.env.PORT + '.');
 });
