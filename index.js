@@ -26,12 +26,12 @@ HttpTask.prototype.generateWatcher = function(gulp, params) {
     var simpleServer = path.join(__dirname, './utils/server.js');
     var server = params.file || simpleServer;
 
-    // livereload.listen(params.lrPort);
+    livereload.listen(params.lrPort);
 
-    // gulp.watch([params.dist + '/**/*'], function(event) {
-    //   var fileName = path.relative(__dirname, event.path);
-    //   livereload.changed({body: { files: [fileName] }});
-    // });
+    gulp.watch([params.dist + '/**/*'], function(event) {
+      var fileName = path.relative(__dirname, event.path);
+      livereload.changed({body: { files: [fileName] }});
+    });
 
     process.env.PATH = path.join(
       __dirname, 'node_modules', '.bin'
